@@ -1,3 +1,5 @@
+from functools import reduce
+
 input = range(357253, 892942 + 1)
 
 
@@ -23,9 +25,5 @@ assert greater_than_check(123456) is False
 assert greater_than_check(123789) is False
 assert greater_than_check(223450) is False
 
-count = 0
-for x in input:
-    count += greater_than_check(x)
-
-print('Result part 1: ' + str(count))
-
+result = reduce(lambda x, y: x + y, map(greater_than_check, input))
+print('Result part 1: ' + str(result))
